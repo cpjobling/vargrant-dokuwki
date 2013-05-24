@@ -25,8 +25,10 @@ chmod -R 755 ${DOC_ROOT}/dokuwiki/data/
 chown -R www-data:www-data ${DOC_ROOT}/dokuwiki/data/
 chmod 2775 ${DOC_ROOT}/dokuwiki/data/{attic,cache,index,locks,media,meta,pages,tmp}
 chown www-data:www-data ${DOC_ROOT}/dokuwiki/data/{attic,cache,index,locks,media,meta,pages,tmp}
-rm ${DOC_ROOT}/dokuwiki/install.php
-cp dokuwki/conf/*.php ${DOC_ROOT}/dokuwiki/conf
+if [ -e ${DOC_ROOT}/dokuwiki/install.php ]; then
+  rm ${DOC_ROOT}/dokuwiki/install.php
+fi
+ln -sf /vagrant/dokuwki/conf/*.php ${DOC_ROOT}/dokuwiki/conf
 chmod 644 ${DOC_ROOT}/dokuwiki/conf/{local.php,users.auth.php,acl.auth.php,plugins.local.php}
 
 
