@@ -4,6 +4,8 @@ apt-get update
 apt-get install -y apache2
 apt-get install -y php5 php5-gd
 apt-get install -y git
+apt-get install -y vim
+
 
 # Install Dokuwiki
 DOC_ROOT=/var/www
@@ -28,8 +30,15 @@ chown www-data:www-data ${DOC_ROOT}/dokuwiki/data/{attic,cache,index,locks,media
 if [ -e ${DOC_ROOT}/dokuwiki/install.php ]; then
   rm ${DOC_ROOT}/dokuwiki/install.php
 fi
-ln -sf /vagrant/dokuwki/conf/*.php ${DOC_ROOT}/dokuwiki/conf
-chmod 644 ${DOC_ROOT}/dokuwiki/conf/{local.php,users.auth.php,acl.auth.php,plugins.local.php}
+FILES=/vagrant/dokuwiki/conf/*.php
+for config_file in $FILES
+do
+  ln -sf $config_file ${DOC_ROOT}/dokuwiki/conf
+done
+chmod 666 /vagrant/dokuwiki/conf/{users.auth.php,plugins.local.php,acl.auth.php,local.php}
+cp /vagrant/etc/apache2/sites-available/default /etc/apache2/sites-available
+service apache2 restart
+
 
 
 

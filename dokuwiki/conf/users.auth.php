@@ -9,4 +9,4 @@
 # login:passwordhash:Real Name:email:groups,comma,seperated
 
 
-admin:$1$z70pec2U$Vse8pgrZhqMS0Y197GOcq/:Dokuwiki Administrator:example@example.com:admin,user
+admin:$1$solKneu5$g9o0Ah8S1NE72HOokTxpX.:DokuWiki admin:example@example.com:admin,user

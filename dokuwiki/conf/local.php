@@ -9,3 +9,6 @@ $conf['lang'] = 'en';
 $conf['license'] = 'cc-by-sa';
 $conf['useacl'] = 1;
 $conf['superuser'] = '@admin';
+$conf['userewrite'] = '1';
+
+// end auto-generated content
